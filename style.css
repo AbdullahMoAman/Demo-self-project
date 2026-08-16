@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 nav a img {
   width: 100px;
   border-radius: 50%;
@@ -11,7 +17,7 @@ nav {
   width: 90%;
   margin: auto;
   /* height: 20vh; */
-  margin-bottom: 200px;
+  margin-bottom: 8rem;
   border-right: solid black 5px;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
@@ -58,7 +64,7 @@ nav {
   width: 90%;
   margin: auto;
   text-align: center;
-  margin-bottom: 210px;
+  margin-bottom: 8rem;
   padding-top: 100px;
 }
 
@@ -73,11 +79,11 @@ nav {
 .cta-btn {
   text-decoration: none;
   color: black;
-  padding: 15px 20px;
-  border: 3px solid blue;
-  border-radius: 10%;
+  padding: 15px 30px;
+  border: 1px solid rgb(100, 100, 130);
+  border-radius: 50px;
   font-size: 20px;
-  width: 100px;
+  transition: all 0.3s;
   margin: auto;
 }
 
@@ -95,7 +101,7 @@ hr {
   width: 90%;
   margin: auto;
   /* margin-top: 40px; */
-  margin-bottom: 120px;
+  margin-bottom: 4rem;
   /* background-color: red; */
   padding-top: 100px;
   border: solid black 2px;
@@ -113,7 +119,7 @@ hr {
   /* background-color: green; */
 }
 
-.feature-grid {
+.feature-card {
   text-align: center;
   /* margin: 0 3px; */
   background-color: #eee;
