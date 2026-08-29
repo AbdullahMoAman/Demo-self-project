@@ -1,54 +1,79 @@
-// const modal = document.querySelector(".modal");
-// const btnOpenModal = document.querySelector(".btn");
-// const btnCloseModal = document.querySelector(".close--btn");
-// const overlay = document.querySelector(".overlay");
-// const nav = document.querySelector(".nav");
+const modal = document.querySelector(".modal");
+const btnOpenModal = document.querySelector(".btn-open");
+const btnCloseModal = document.querySelector(".close--btn");
+const overlay = document.querySelector(".overlay");
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector(".section--1");
+const nav = document.querySelector(".nav");
+// const
 
-// const openModal = (e) => {
-//   e.preventDefault();
-//   modal.classList.remove("hidden");
-//   overlay.classList.remove("hidden");
-// };
+//
+// Open, close the log in modal
 
-// const closeModal = () => {
-//   modal.classList.add("hidden");
-//   overlay.classList.add("hidden");
-// };
+const openModal = (e) => {
+  e.preventDefault();
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
 
-// btnOpenModal.addEventListener("click", openModal);
+const closeModal = (e) => {
+  e.preventDefault();
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
 
-// btnCloseModal.addEventListener("click", closeModal);
-// overlay.addEventListener("click", closeModal);
+btnOpenModal.addEventListener("click", openModal);
+btnCloseModal.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
 
-// // Page Navigation
+// Scroll btn with smooth behavior
+btnScrollTo.addEventListener("click", function (e) {
+  section1.scrollIntoView({ behavior: "smooth" });
+});
 
-// document.querySelector(".nav-links").addEventListener("click", function (e) {
-//   e.preventDefault();
-
-//   // Matching Strategy
-//   if (e.target.classList.contains("nav-link")) {
-//     const id = e.target.getAttribute("href");
+// Page Navigation
+// document.querySelectorAll(".nav-link").forEach((el) => {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute("href");
+//     console.log(id);
 //     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
-//   }
+//   });
 // });
 
-// // Menu fade animation
-// const handleHover = function (e) {
-//   if (e.target.classList.contains("nav-link")) {
-//     const link = e.target;
-//     const siblings = link.closest(".nav").querySelectorAll(".nav-link");
-//     const logo = link.closest(".nav").querySelector("img");
+// 1- Add event listener to common parent element
+// 2- Determine what element originated the event
 
-//     siblings.forEach((el) => {
-//       if (el !== link) el.style.opacity = this;
-//     });
-//     logo.style.opacity = this;
-//   }
-// };
+document.querySelector(".nav-links").addEventListener("click", function (e) {
+  e.preventDefault();
 
-// // Pssing "argument" into handler
-// nav.addEventListener("mouseover", handleHover.bind(0.5));
-// nav.addEventListener("mouseout", handleHover.bind(1));
+  // Matching strategy
+  if (e.target.classList.contains("nav-link")) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+// Menu fade animation
+const handlerHover = function (e) {
+  if (e.target.classList.contains("nav-link")) {
+    const link = e.target;
+    const siblings = link.closest(".nav").querySelectorAll(".nav-link");
+    const logo = link.closest(".nav").querySelector(".logo");
+    const button = link.closest(".nav").querySelector("button");
+    console.log(logo);
+
+    siblings.forEach((el) => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+    button.style.opacity = this;
+  }
+};
+
+// Passing 'argument' into handler
+nav.addEventListener("mouseover", handlerHover.bind(0.5));
+nav.addEventListener("mouseout", handlerHover.bind(1));
 
 // // Sticky navigation: Intersection Observer API
 // const header = document.querySelector(".nav");
