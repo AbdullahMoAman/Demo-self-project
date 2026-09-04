@@ -6,6 +6,12 @@
     <title>Landing Page</title>
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="script.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+     </style>
   </head>
 
   <body>
@@ -19,10 +25,13 @@
 
       <ul class="nav-links">
         <li class="nav-item"><a class="nav-link" href="#Home">الرئيسية</a></li>
-        <li class="nav-item"><a class="nav-link" href="#About">عنا</a></li>
-        <li class="nav-item"><a class="nav-link" href="#Menu">أعمالنا</a></li>
+        <li class="nav-item"><a class="nav-link" href="#section--1">لماذا سقيا الماء ؟</a></li>
+        <li class="nav-item"><a class="nav-link" href="#section--2">أعمالنا</a></li>
         <li class="nav-item">
-          <a class="nav-link" href="#Testimonials">تواصل معنا</a>
+          <a href="#section--3" class="nav-link">آراء عملائنا</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#footer">تواصل معنا</a>
         </li>
       </ul>
 
@@ -52,7 +61,7 @@
       </div>
     </header>
 
-    <section class="section--1" id="About">
+    <section class="section--1" id="section--1">
       <div class="content">
         <h2>لماذا سقيا الماء ؟</h2>
         <p>
@@ -74,35 +83,116 @@
         <button class="btn">اطلع على المشاريع</button>
       </div>
       <div class="image">
-        <img src="imgs/a-well-digging.jpg" alt="" />
+        <img src="imgs/a-well-digging.jpg" class="lazy-img" alt="" />
       </div>
     </section>
 
-    <section class="section--2" id="Menu">
+    <section class="section--2" id="section--2">
       <h2>الأكثر طلبا</h2>
       <div class="content-2">
         <div class="card-1 card">
-          <img src="imgs/card-well-1.jpg" alt="">
+          <img 
+          src="imgs/card-well-1-lazy.jpg"
+          data-src="imgs/card-well-1.jbg"
+          alt="photograph"
+          class="lazy-img"
+          />
           <h3>بئر ارتوازي </h3>
           <p>بمضخة يدوية</p>
           <button>عرض المزيد</button>
         </div>
         
         <div class="card-2 card">
-          <img src="imgs/card-well-2.jpg" alt="">
+          <img src="imgs/card-well-2.jpg" class="lazy-img" alt="">
           <h3>مواضئ سيراميك </h3>
           <p>يتم التنفيذ بجانب المسجد</p>
           <button>عرض المزيد</button>
         </div>
 
         <div class="card-3 card">
-          <img src="imgs/card-well-3.jpg" alt="">
+          <img src="imgs/card-well-3.jpg" class="lazy-img" alt="">
           <h3>بئر كهربائي </h3>
           <p>بمضخة كهربائية ويدوية</p>
           <button>عرض المزيد</button>
         </div>
 
     </section>
+    
+    <section class="section--3" id="section--3">
+      <div class="section-title section__title--testemonials">
+        <h3 class="section-description">لست متأكدا بعد ؟</h3>
+        <h2 class="section-header"> اليك اراء عملائنا الفاضلين<br> ... بعد الاستفادة من خدماتنا</h2>
+      </div>
+      <div class="slider">
+        <div class="slide">
+          <div class="testemonial">
+            <h5 class="testemonial-header">!! أفضل موقع تعاملت معه للآبار من حيث الأسعار والجودة</h5>
+            <blockquote class="testemonial-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit temporibus laboriosam unde laudantium mollitia a sint repellendus cum doloribus, officiis non, alias dolores sapiente, rerum suscipit eligendi neque iure facere quas eius ex. Voluptates non distinctio beatae ex provident at quam voluptatem doloribus quia dolorem, sit vel architecto tenetur id!</blockquote>
+            <address class="testemonial-author">
+              <img src="imgs/user-1.jpg" alt="" class="testemonial-photo">
+              <h6 class="testemonial-name">محمد راشد</h6>
+              <p class="testemonial-location">مملكة الأردن</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testemonial">
+            <h5 class="testemonial-header">أنصح التجار والمجتمع بالتعامل مع شركة غراس الموقرة</h5>
+            <blockquote class="testemonial-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit temporibus laboriosam unde laudantium mollitia a sint repellendus cum doloribus, officiis non, alias dolores sapiente, rerum suscipit eligendi neque iure facere quas eius ex. Voluptates non distinctio beatae ex provident at quam voluptatem doloribus quia dolorem, sit vel architecto tenetur id!</blockquote>
+            <address class="testemonial-author">
+              <img src="imgs/user-2.jpg" alt="" class="testemonial-photo">
+              <h6 class="testemonial-name">محمد فتحي</h6>
+              <p class="testemonial-location">مصر</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testemonial">
+            <h5 class="testemonial-header">سرعة في التسليم وسرعة في الأداء </h5>
+            <blockquote class="testemonial-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit temporibus laboriosam unde laudantium mollitia a sint repellendus cum doloribus, officiis non, alias dolores sapiente, rerum suscipit eligendi neque iure facere quas eius ex. Voluptates non distinctio beatae ex provident at quam voluptatem doloribus quia dolorem, sit vel architecto tenetur id!</blockquote>
+            <address class="testemonial-author">
+              <img src="imgs/user-3.jpg" alt="" class="testemonial-photo">
+              <h6 class="testemonial-name">راشد العتيبي</h6>
+              <p class="testemonial-location">المملكة العربية السعودية</p>
+            </address>
+          </div>
+        </div>
+
+        <button class="slider-btn btn--right">➡</button>
+        <button class="slider-btn btn--left">⬅</button>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <div class="first-line">
+        <div class="logo">
+          <img src="imgs/logo.webp" alt="">
+        </div>
+        <div class="links">
+          <a href="#facebook.com"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#instagram.com"><i class="fa-brands fa-instagram"></i></a>
+          <a href="whatsup.com"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="tiktok.com"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <div class="contact-us">
+          <h2>معلومات الاتصال</h2>
+          <p class="phone-num-1">9374382606</p>
+          <p class="phone-num-2">9374382606</p>
+          <p class="email-id">Grass-company@gmail.com</p>
+        </div>
+      </div>
+      <hr>
+      <div class="second-line">
+        <ul>
+          <li><a href="">الشروط والأحكام</a></li>
+          <li><a href="">سياسة الخصوصية</a></li>
+          <li><a href="">سياسة الاسترداد والإلغاء</a></li>
+          <li><a href="">اتصل بنا</a></li>
+        </ul>
+      </div>
+    </footer>
 
     <div class="modal hidden">
       <button class="close--btn">×</button>
@@ -111,13 +201,13 @@
         within <span>5 minutes</span>
       </h2>
       <form class="modal-form">
-        <label for="first-name">First Name</label>
+        <label>First Name</label>
         <input type="text" id="first-name" />
 
-        <label for="">Last Name</label>
+        <label>Last Name</label>
         <input type="text" />
 
-        <label for="">Email Address</label>
+        <label>Email Address</label>
         <input type="text" />
 
         <button class="btn">Next Step ➡</button>
