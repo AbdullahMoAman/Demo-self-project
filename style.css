@@ -1,6 +1,8 @@
 :root {
-  --primary-color: rgb(22, 106, 36);
-  --button-color: rgb(5, 64, 15);
+  --primary-color: #1b6b7a;
+  --primary-color-2: #2e8c9a2f;
+  --another-color: #190656;
+  --button-color: #0df3ff;
   --padding-topBottom-rightLeft: 6rem 8rem;
 }
 
@@ -44,7 +46,8 @@ body {
   width: 100%;
   padding: 0 3rem;
   height: 6.5rem;
-  background-image: linear-gradient(to right, #094101, #41a135);
+  /* background-image: linear-gradient(to right, #094101, #41a135); */
+  background: var(--primary-color);
   border-bottom: 2px #cbcbcb solid;
   box-shadow: 3px 1px 8px 0px #00000070;
   z-index: 100;
@@ -113,7 +116,7 @@ section {
 
 .btn {
   padding: 1rem 2rem;
-  color: #fff;
+  color: #000;
   border: solid 2px #fff;
   border-top: transparent;
   border-bottom: transparent;
@@ -147,43 +150,43 @@ section {
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0; /*shortcut of top/right/bottom/left: 0 */
+  /* inset: 0; shortcut of top/right/bottom/left: 0 */
+  top: 0;
+  left: 0%;
+  bottom: 0;
+  right: 0;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.55)),
-    url("imgs/a-well.jpg");
-  background-size: contain;
+    url("imgs/lake.jpg");
+  background-size: cover;
   background-position: center;
-  filter: blur(7px);
+  background-repeat: no-repeat;
+  filter: blur(1px);
+  width: 100%;
   z-index: -1;
 }
 
-.img-content {
+.header {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  height: 500px;
-  text-align: left;
-  /* border: red solid 2px; */
-}
-
-.heading {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
   height: 300px;
   /* border: solid red 2px; */
 }
 
-.heading .btn {
+.header .btn {
   background-color: transparent;
   border: 1px solid #fff;
   border-top: transparent;
   border-bottom: transparent;
+  color: #fff;
+  margin-right: -35rem;
 }
 
-.heading h1 {
+.header h1 {
   font-size: 2.3rem;
   box-shadow: 0px 3px 4px #fff;
   color: #fff;
@@ -191,9 +194,10 @@ section {
   border-radius: 20px;
   min-width: 300px;
   text-align: center;
+  margin-bottom: 5rem;
 }
 
-.heading p {
+.header p {
   padding: 13px 20px;
   border: #fff solid 2px;
   border-top: transparent;
@@ -203,11 +207,7 @@ section {
   color: #fff;
   text-align: right;
   width: 60%;
-}
-
-.img-content img {
-  width: 31rem;
-  border-radius: 100px 60px 60px 100px;
+  margin-bottom: 3rem;
 }
 
 .modal {
@@ -272,8 +272,8 @@ section {
   justify-self: center;
   margin-top: 0.8rem;
   margin-bottom: -2rem;
-  font-size: 1rem;
-  font-weight: 550;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .modal h2 {
@@ -359,7 +359,7 @@ span::after {
 }
 
 .section--2 {
-  background-color: #1bb6063b;
+  background-color: var(--primary-color-2);
   width: 100%;
   padding: 6rem;
 }
@@ -390,7 +390,7 @@ span::after {
 }
 
 .card h3 {
-  color: rgb(8, 92, 21);
+  color: var(--primary-color);
   font-weight: bold;
   text-align: center;
   font-size: 1.4rem;
@@ -517,7 +517,7 @@ span::after {
   z-index: 10;
 
   border: none;
-  background: var(--button-color);
+  background: var(--another-color);
   font-family: inherit;
   color: #fff;
   border-radius: 50%;
@@ -540,7 +540,7 @@ span::after {
 .testemonial {
   width: 70%;
   position: relative;
-  background: linear-gradient(356deg, rgb(0, 255, 42), transparent);
+  background: linear-gradient(356deg, #1b6b7a, transparent);
   padding: 2rem;
   border-radius: 4rem;
   color: #000;
