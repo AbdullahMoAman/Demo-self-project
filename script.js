@@ -116,6 +116,76 @@ allSections.forEach((section) => {
   section.classList.add("section-hidden");
 });
 
+// Reveal footer
+const footer = document.querySelectorAll("footer");
+
+const revealFooter = function (entries, observer) {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    entry.target.classList.remove("footer-hidden");
+    observer.unobserve(entry.target);
+  });
+};
+
+const footerObserver = new IntersectionObserver(revealFooter, {
+  root: null,
+  threshold: 0.15,
+});
+
+footer.forEach((footer) => {
+  footerObserver.observe(footer);
+  footer.classList.add("footer-hidden");
+});
+
+// Slider
+
+const slider = function () {
+  // Identify the DOM variables
+  const slides = document.querySelectorAll(".slide");
+  const btnLeft = document.querySelector(".btn--left");
+  const btnRight = document.querySelector(".btn--right");
+
+  // Assign the curSlide, maxSlide
+  let curSlide = 0;
+  const maxSlide = slides.length;
+
+  // Logic Functions
+  const goToSlide = function (slide) {
+    slides.forEach((s, i) => {
+      s.style.transform = `translateX(${100 * (i - slide)}%)`;
+    });
+  };
+
+  const nextSlide = function () {
+    if (curSlide === maxSlide - 1) {
+      curSlide = 0;
+    } else {
+      curSlide++;
+    }
+    goToSlide(curSlide);
+  };
+
+  const prevSlide = function () {
+    if (curSlide === 0) {
+      curSlide = maxSlide - 1;
+    } else {
+      curSlide--;
+    }
+    goToSlide(curSlide);
+  };
+
+  // Initializing the slide
+  const init = () => {
+    goToSlide(0);
+  };
+  init();
+  // Event Handlers
+  btnLeft.addEventListener("click", prevSlide);
+  btnRight.addEventListener("click", nextSlide);
+};
+slider();
+
 // Lazy loading images
 // const imgTargets = document.querySelectorAll("img[data-src]");
 
@@ -140,51 +210,3 @@ allSections.forEach((section) => {
 // });
 
 // imgTargets.forEach((img) => imgOvserver.observe(img));
-
-const slider = function () {
-  const slides = document.querySelectorAll(".slide");
-  const btnLeft = document.querySelector(".btn--left");
-  const btnRight = document.querySelector(".btn--right");
-
-  let curSlide = 0;
-  const maxSlide = slides.length;
-
-  // Functions
-  const goToSlide = function (slide) {
-    slides.forEach(
-      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`),
-    );
-  };
-
-  // Next slide
-  const nextSlide = function () {
-    if (curSlide === maxSlide - 1) {
-      curSlide = 0;
-    } else {
-      curSlide++;
-    }
-
-    goToSlide(curSlide);
-  };
-
-  const prevSlide = function () {
-    if (curSlide === 0) {
-      curSlide = maxSlide - 1;
-    } else {
-      curSlide--;
-    }
-
-    goToSlide(curSlide);
-  };
-
-  const init = function () {
-    goToSlide(0);
-  };
-  init();
-
-  // Event handlers
-  btnRight.addEventListener("click", nextSlide);
-  btnLeft.addEventListener("click", prevSlide);
-};
-
-slider();

@@ -25,13 +25,14 @@ body {
 
 .logo {
   width: 4.3rem;
-  border-radius: 2.5rem;
-  background-color: white;
+
   transition: 0.5s;
 }
 
 .logo img {
   width: 100%;
+  border-radius: 3rem;
+  background-color: white;
 }
 
 .nav {
@@ -65,6 +66,11 @@ section {
   transition: 0.5s;
 }
 .section-hidden {
+  opacity: 0;
+  transform: translateY(8rem);
+}
+
+.footer-hidden {
   opacity: 0;
   transform: translateY(8rem);
 }
@@ -196,22 +202,12 @@ section {
   border-radius: 10px;
   color: #fff;
   text-align: right;
+  width: 60%;
 }
 
 .img-content img {
   width: 31rem;
   border-radius: 100px 60px 60px 100px;
-}
-
-.img-content label {
-  width: 60%;
-  padding: 13px 20px;
-  border: #fff solid 2px;
-  border-bottom: transparent;
-  border-left: transparent;
-  border-right: transparent;
-  border-radius: 10px;
-  color: #fff;
 }
 
 .modal {
@@ -237,18 +233,20 @@ section {
   gap: 1.5rem;
   margin: 2rem 0;
   width: 24rem;
+  text-align: right;
 }
 
 .modal-form label {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .modal-form input {
   font-size: 1rem;
   padding: 0.6rem 1.1rem;
   border-radius: 0.5rem;
-  border: 1px solid #ddd;
+  border: 2px solid rgb(0, 98, 7);
+  background: rgba(53, 64, 50, 0.723);
 }
 
 .modal .close--btn {
@@ -262,16 +260,25 @@ section {
   color: white;
 }
 
+.test-span {
+  position: absolute;
+  top: 19%;
+  right: 3%;
+  color: white;
+}
+
 .modal-form .btn {
   grid-column: 1 / span 2;
   justify-self: center;
   margin-top: 0.8rem;
   margin-bottom: -2rem;
   font-size: 1rem;
+  font-weight: 550;
 }
 
 .modal h2 {
   font-size: 2rem;
+  text-align: right;
 }
 
 .modal h2 span {
@@ -579,6 +586,7 @@ span::after {
   background-color: var(--primary-color);
   padding-top: 3rem 1rem 0 1rem;
   color: white;
+  transition: 0.5s;
 }
 
 .footer .first-line {
