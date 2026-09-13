@@ -32,14 +32,6 @@ btnScrollTo.addEventListener("click", function (e) {
 });
 
 // Page Navigation
-// document.querySelectorAll(".nav-link").forEach((el) => {
-//   el.addEventListener("click", function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute("href");
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
-//   });
-// });
 
 // Easy way --
 // 1- Add event listener to common parent element
