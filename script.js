@@ -132,51 +132,138 @@ footer.forEach((footer) => {
 
 // Slider
 
-const slider = function () {
-  // Identify the DOM variables
-  const slides = document.querySelectorAll(".slide");
-  const btnLeft = document.querySelector(".btn--left");
-  const btnRight = document.querySelector(".btn--right");
+// const slider = function () {
+//   // Identify the DOM variables
+//   const slides = document.querySelectorAll(".slide");
+//   const btnLeft = document.querySelector(".btn--left");
+//   const btnRight = document.querySelector(".btn--right");
 
-  // Assign the curSlide, maxSlide
-  let curSlide = 0;
-  const maxSlide = slides.length;
+//   // Assign the curSlide, maxSlide
+//   let curSlide = 0;
+//   const maxSlide = slides.length;
 
-  // Logic Functions
-  const goToSlide = function (slide) {
-    slides.forEach((s, i) => {
-      s.style.transform = `translateX(${100 * (i - slide)}%)`;
+//   // Logic Functions
+//   const goToSlide = function (slide) {
+//     slides.forEach((s, i) => {
+//       s.style.transform = `translateX(${100 * (i - slide)}%)`;
+//     });
+//   };
+
+//   const nextSlide = function () {
+//     if (curSlide === maxSlide - 1) {
+//       curSlide = 0;
+//     } else {
+//       curSlide++;
+//     }
+//     goToSlide(curSlide);
+//   };
+
+//   const prevSlide = function () {
+//     if (curSlide === 0) {
+//       curSlide = maxSlide - 1;
+//     } else {
+//       curSlide--;
+//     }
+//     goToSlide(curSlide);
+//   };
+
+//   // Initializing the slide
+//   const init = () => {
+//     goToSlide(0);
+//   };
+//   init();
+//   // Event Handlers
+//   btnLeft.addEventListener("click", prevSlide);
+//   btnRight.addEventListener("click", nextSlide);
+// };
+// slider();
+
+// ==========================================================
+// Testimonials slider (RTL): buttons, dots, swipe, keyboard
+// ==========================================================
+(function () {
+  "use strict";
+
+  const root = document.querySelector("[data-slider]");
+  if (!root) return;
+
+  const track = root.querySelector(".ts-track");
+  const slides = root.querySelectorAll(".ts-slide");
+  const btnPrev = root.querySelector(".ts-btn--prev");
+  const btnNext = root.querySelector(".ts-btn--next");
+  const dotsBox = root.querySelector(".ts-dots");
+
+  let current = 0;
+  const last = slides.length - 1;
+
+  // ----- Build dots -----
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "ts-dot";
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", "الرأي " + (i + 1));
+    dot.addEventListener("click", () => goTo(i));
+    dotsBox.appendChild(dot);
+  });
+  const dots = dotsBox.querySelectorAll(".ts-dot");
+
+  // ----- Core -----
+  function goTo(n) {
+    // loop around at both ends
+    current = n > last ? 0 : n < 0 ? last : n;
+
+    // RTL: slide 1 is on the right, so the track moves RIGHT (positive X)
+    track.style.transform = "translateX(" + current * 100 + "%)";
+
+    dots.forEach((d, i) => {
+      d.classList.toggle("is-active", i === current);
+      d.setAttribute("aria-selected", i === current ? "true" : "false");
     });
-  };
+  }
 
-  const nextSlide = function () {
-    if (curSlide === maxSlide - 1) {
-      curSlide = 0;
-    } else {
-      curSlide++;
-    }
-    goToSlide(curSlide);
-  };
+  const next = () => goTo(current + 1);
+  const prev = () => goTo(current - 1);
 
-  const prevSlide = function () {
-    if (curSlide === 0) {
-      curSlide = maxSlide - 1;
-    } else {
-      curSlide--;
-    }
-    goToSlide(curSlide);
-  };
+  btnNext.addEventListener("click", next);
+  btnPrev.addEventListener("click", prev);
 
-  // Initializing the slide
-  const init = () => {
-    goToSlide(0);
-  };
-  init();
-  // Event Handlers
-  btnLeft.addEventListener("click", prevSlide);
-  btnRight.addEventListener("click", nextSlide);
-};
-slider();
+  // ----- Keyboard (arrows follow the visual direction: left = next in RTL) -----
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") next();
+    if (e.key === "ArrowRight") prev();
+  });
+
+  // ----- Touch swipe (RTL: swiping to the right shows the next slide) -----
+  let startX = 0;
+  let startY = 0;
+
+  root.addEventListener(
+    "touchstart",
+    (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    },
+    { passive: true },
+  );
+
+  root.addEventListener(
+    "touchend",
+    (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+
+      // ignore mostly-vertical gestures (page scrolling) and tiny moves
+      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+
+      dx > 0 ? next() : prev();
+    },
+    { passive: true },
+  );
+
+  // ----- Init -----
+  goTo(0);
+})();
 
 // Lazy loading images
 // const imgTargets = document.querySelectorAll("img[data-src]");

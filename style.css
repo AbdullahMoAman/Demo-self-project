@@ -502,33 +502,39 @@ span::after {
 
 .footer {
   background-color: var(--primary-color);
-  padding-top: 3rem 1rem 0 1rem;
+  padding-top: 3rem 1rem 0;
   color: white;
   transition: 0.5s;
 }
 
 .footer .first-line {
   max-width: 70rem;
+  margin: 0 auto;
+  padding: 2rem 0;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  /* gap: 2rem; */
+  gap: 2rem;
+}
+
+.first-line .logo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .first-line .links {
   display: flex;
   flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .first-line .links a {
   text-decoration: none;
   color: white;
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   font-size: 1.5rem;
   transition: 0.2s;
 }
@@ -541,29 +547,39 @@ span::after {
   text-align: right;
 }
 
+.first-line .contact-us p {
+  direction: ltr; /* keeps the "+" at thte start of phone numbers*/
+  overflow-wrap: anywhere; /*long email can't overflow the screen*/
+}
+
 .footer .second-line {
   max-width: 70rem;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1rem;
+  margin: 0 auto;
+  /* display: flex; */
+  /* flex-direction: row-reverse; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* padding: 1rem; */
 }
 
 .second-line ul {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .second-line ul li a {
   color: white;
   text-decoration: none;
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
 }
 
-hr {
+.footer hr {
+  max-width: 70rem;
   margin: 2rem auto;
 }
 
@@ -935,5 +951,34 @@ hr {
 @media (prefers-reduced-motion: reduce) {
   .ts-track {
     transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer .first-line {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .first-line .logo img {
+    max-width: 10rem;
+    margin: 0 auto;
+  }
+
+  .first-line .links {
+    justify-content: center;
+  }
+
+  .first-line .contact-us,
+  .first-line .contact-us p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .second-line ul {
+    flex-direction: column;
+    align-items: center;
   }
 }
